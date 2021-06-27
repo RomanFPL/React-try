@@ -23,7 +23,8 @@ const App = () => {
                 <SearchPanel/>
                 <PostStatusFilter/>
             </div>
-            <PostList posts={data}/>
+            <PostList posts={data}
+            onDelete={id => console.log(id)}/>
             <PostAddForm/>
        </div>
     )

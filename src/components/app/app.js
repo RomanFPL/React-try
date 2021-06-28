@@ -20,6 +20,8 @@ export default class App extends Component {
         }
         this.deleteItem = this.deleteItem.bind(this);
         this.addItem = this.addItem.bind(this);
+        this.onToggleIportant = this.onToggleIportant.bind(this);
+        this.onToggleLike = this.onToggleLike.bind(this);
 
         this.maxId = 5;
     }
@@ -52,6 +54,14 @@ export default class App extends Component {
        })
     }
 
+    onToggleIportant(id){
+        console.log(`Important ${id}`);
+    }
+
+    onToggleLike(like){
+        console.log(`Like ${like}`);
+    }
+
     render(){
         return (
             <div className="app">
@@ -61,7 +71,10 @@ export default class App extends Component {
                      <PostStatusFilter/>
                  </div>
                  <PostList posts={this.state.data}
-                 onDelete={this.deleteItem}/>
+                 onDelete={this.deleteItem}
+                 onToggleIportant={this.onToggleIportant}
+                 onToggleLike={this.onToggleLike}
+                 />
                  <PostAddForm
                  onAdd={this.addItem}/>
             </div>

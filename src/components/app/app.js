@@ -13,10 +13,10 @@ export default class App extends Component {
         super(props);
         this.state = {
                 data : [
-                {label: "Everything works fine", important: false, id: 1},
-                {label: "But it can works better", important: false, id: 2},
-                {label: "Or not...", important: false, id: 3},
-                {label: "Cool", important: true, id: 4}]
+                {label: "Everything works fine", like: false, important: false, id: 1},
+                {label: "But it can works better", like: false, important: false, id: 2},
+                {label: "Or not...", important: false, like: false, id: 3},
+                {label: "Cool", important: true, like: false, id: 4}]
         }
         this.deleteItem = this.deleteItem.bind(this);
         this.addItem = this.addItem.bind(this);
@@ -58,8 +58,18 @@ export default class App extends Component {
         console.log(`Important ${id}`);
     }
 
-    onToggleLike(like){
-        console.log(`Like ${like}`);
+    onToggleLike(id){
+        this.setState(({data}) => {
+            const index = data.findIndex(elem => elem.id === id);
+
+            const old = data[index];
+            const newItem = {...old, like: !old.like};
+
+            const newArr = [...data.slice(0, index), newItem, ...data.slice(index+1)]
+            return {
+                data: newArr
+            }
+        })
     }
 
     render(){

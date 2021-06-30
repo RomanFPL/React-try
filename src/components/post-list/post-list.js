@@ -12,8 +12,8 @@ const PostList = ({posts, onDelete, onToggleIportant, onToggleLike}) => {
                  <PostListItem 
                  {...itemProps} 
                  onDelete={() => onDelete(id)}
-                 onToggleIportant={onToggleIportant(id)}
-                 onToggleLike={onToggleLike(id)}/>
+                 onToggleIportant={() => {onToggleIportant(id)}}
+                 onToggleLike={() => {onToggleLike(id)}}/>
             </li>
         )
     });
